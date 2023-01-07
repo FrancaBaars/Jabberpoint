@@ -62,12 +62,12 @@ public class Presentation {
 	public void prevSlide() {
 		if (currentSlideNumber > 0) {
 			setSlideNumber(currentSlideNumber - 1);
-	    }
+		}
 	}
 
 	//Navigate to the next slide unless we are at the last slide
 	public void nextSlide() {
-		if (currentSlideNumber < (showList.size()-1)) {
+		if (currentSlideNumber < (showList.size() - 1)) {
 			setSlideNumber(currentSlideNumber + 1);
 		}
 	}
@@ -85,10 +85,10 @@ public class Presentation {
 
 	//Return a slide with a specific number
 	public Slide getSlide(int number) {
-		if (number < 0 || number >= getSize()){
+		if (number < 0 || number >= getSize()) {
 			return null;
-	    }
-			return (Slide)showList.get(number);
+		}
+		return (Slide) showList.get(number);
 	}
 
 	//Return the current slide
