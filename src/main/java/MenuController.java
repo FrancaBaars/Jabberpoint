@@ -58,12 +58,9 @@ public class MenuController extends MenuBar {
 
         //press new
 		fileMenu.add(menuItem = mkMenuItem(NEW));
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.clear();
-				parent.repaint();
-			}
-		});
+		menuItem.addActionListener(actionEvent -> this.pressNew());
+
+        //press save
 		fileMenu.add(menuItem = mkMenuItem(SAVE));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -126,6 +123,11 @@ public class MenuController extends MenuBar {
             JOptionPane.showMessageDialog(parent, IOEX + exc,
                     LOADERR, JOptionPane.ERROR_MESSAGE);
         }
+        parent.repaint();
+    }
+
+    public void pressNew(){
+        presentation.clear();
         parent.repaint();
     }
 
