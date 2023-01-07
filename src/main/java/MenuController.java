@@ -64,19 +64,16 @@ public class MenuController extends MenuBar {
         //press exit
         fileMenu.addSeparator();
         fileMenu.add(menuItem = mkMenuItem(EXIT));
-        menuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent) {
-                presentation.exit(0);
-            }
-        });
+        menuItem.addActionListener(actionEvent -> this.pressExit());
+
+        //new tab
         add(fileMenu);
         Menu viewMenu = new Menu(VIEW);
+
+        //press next
         viewMenu.add(menuItem = mkMenuItem(NEXT));
-        menuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent) {
-                presentation.nextSlide();
-            }
-        });
+        menuItem.addActionListener(actionEvent -> this.pressNext());
+
         viewMenu.add(menuItem = mkMenuItem(PREV));
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
@@ -120,6 +117,10 @@ public class MenuController extends MenuBar {
         parent.repaint();
     }
 
+    public void pressExit() {
+        presentation.exit(0);
+    }
+
     public void pressSave() {
         Accessor xmlAccessor = new XMLAccessor();
         try {
@@ -128,6 +129,10 @@ public class MenuController extends MenuBar {
             JOptionPane.showMessageDialog(parent, IOEX + exc,
                     SAVEERR, JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    public void pressNext() {
+        presentation.nextSlide();
     }
 
 
