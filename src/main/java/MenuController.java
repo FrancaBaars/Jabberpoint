@@ -75,27 +75,20 @@ public class MenuController extends MenuBar {
         menuItem.addActionListener(actionEvent -> this.pressNext());
 
         viewMenu.add(menuItem = mkMenuItem(PREV));
-        menuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent) {
-                presentation.prevSlide();
-            }
-        });
+        menuItem.addActionListener(actionEvent -> this.pressPrevious());
+
+        //go to page number
         viewMenu.add(menuItem = mkMenuItem(GOTO));
-        menuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent) {
-                String pageNumberStr = JOptionPane.showInputDialog((Object) PAGENR);
-                int pageNumber = Integer.parseInt(pageNumberStr);
-                presentation.setSlideNumber(pageNumber - 1);
-            }
-        });
+        menuItem.addActionListener(actionEvent -> this.goToPage());
+
+
         add(viewMenu);
         Menu helpMenu = new Menu(HELP);
+
+        //press about
         helpMenu.add(menuItem = mkMenuItem(ABOUT));
-        menuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent) {
-                AboutBox.show(parent);
-            }
-        });
+        menuItem.addActionListener(actionEvent -> this.openAboutBox());
+
         setHelpMenu(helpMenu);        //Needed for portability (Motif, etc.).
     }
 
@@ -132,7 +125,21 @@ public class MenuController extends MenuBar {
     }
 
     public void pressNext() {
-        presentation.nextSlide();
+        this.presentation.nextSlide();
+    }
+
+    public void pressPrevious() {
+        presentation.prevSlide();
+    }
+
+    public void goToPage() {
+        String pageNumberStr = JOptionPane.showInputDialog((Object) PAGENR);
+        int pageNumber = Integer.parseInt(pageNumberStr);
+        presentation.setSlideNumber(pageNumber - 1);
+    }
+
+    public void openAboutBox() {
+        AboutBox.show(parent);
     }
 
 
