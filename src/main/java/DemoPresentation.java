@@ -6,58 +6,58 @@
  */
 
 class DemoPresentation extends Accessor {
-    private Slide firstSlide;
-    private Slide secondSlide;
-    private Slide thirdSlide;
 
     public void loadFile(Presentation presentation, String unusedFilename) {
         presentation.setTitle(DEMO_NAME);
 
-        this.loadSlide1();
-        presentation.append(this.firstSlide);
+        Slide firstSlide = this.loadSlide1();
+        presentation.append(firstSlide);
 
-        this.loadSlide2();
-        presentation.append(this.secondSlide);
+        Slide secondSlide = this.loadSlide2();
+        presentation.append(secondSlide);
 
-        this.loadSlide3();
-        presentation.append(this.thirdSlide);
+        Slide thirdSlide = this.loadSlide3();
+        presentation.append(thirdSlide);
     }
 
-    public void loadSlide1() {
-        this.firstSlide = new Slide();
-        this.firstSlide.setTitle("JabberPoint");
-        this.firstSlide.append(1, "The Java prestentation tool");
-        this.firstSlide.append(2, "Copyright (c) 1996-2000: Ian Darwin");
-        this.firstSlide.append(2, "Copyright (c) 2000-now:");
-        this.firstSlide.append(2, "Gert Florijn and Sylvia Stuurman");
-        this.firstSlide.append(4, "Calling Jabberpoint without a filename");
-        this.firstSlide.append(4, "will show this presentation");
-        this.firstSlide.append(1, "Navigate:");
-        this.firstSlide.append(3, "Next slide: PgDn or Enter");
-        this.firstSlide.append(3, "Previous slide: PgUp or up-arrow");
-        this.firstSlide.append(3, "Quit: q or Q");
+    public Slide loadSlide1() {
+        Slide firstSlide = new Slide();
+        firstSlide.setTitle("JabberPoint");
+        firstSlide.append(1, "The Java prestentation tool");
+        firstSlide.append(2, "Copyright (c) 1996-2000: Ian Darwin");
+        firstSlide.append(2, "Copyright (c) 2000-now:");
+        firstSlide.append(2, "Gert Florijn and Sylvia Stuurman");
+        firstSlide.append(4, "Calling Jabberpoint without a filename");
+        firstSlide.append(4, "will show presentation");
+        firstSlide.append(1, "Navigate:");
+        firstSlide.append(3, "Next slide: PgDn or Enter");
+        firstSlide.append(3, "Previous slide: PgUp or up-arrow");
+        firstSlide.append(3, "Quit: q or Q");
+        return firstSlide;
     }
 
-    public void loadSlide2() {
-        this.secondSlide = new Slide();
-        this.secondSlide.setTitle("Demonstration of levels and styles");
-        this.secondSlide.append(1, "Level 1");
-        this.secondSlide.append(2, "Level 2");
-        this.secondSlide.append(1, "Again level 1");
-        this.secondSlide.append(1, "Level 1 has style number 1");
-        this.secondSlide.append(2, "Level 2 has style number 2");
-        this.secondSlide.append(3, "This is how level 3 looks like");
-        this.secondSlide.append(4, "And this is level 4");
+    public Slide loadSlide2() {
+        Slide secondSlide = new Slide();
+        secondSlide.setTitle("Demonstration of levels and styles");
+        secondSlide.append(1, "Level 1");
+        secondSlide.append(2, "Level 2");
+        secondSlide.append(1, "Again level 1");
+        secondSlide.append(1, "Level 1 has style number 1");
+        secondSlide.append(2, "Level 2 has style number 2");
+        secondSlide.append(3, "This is how level 3 looks like");
+        secondSlide.append(4, "And this is level 4");
+        return secondSlide;
     }
 
-    public void loadSlide3() {
-        this.thirdSlide = new Slide();
-        this.thirdSlide.setTitle("The third slide");
-        this.thirdSlide.append(1, "To open a new presentation,");
-        this.thirdSlide.append(2, "use File->Open from the menu.");
-        this.thirdSlide.append(1, " ");
-        this.thirdSlide.append(1, "This is the end of the presentation.");
-        this.thirdSlide.append(new BitmapItem(1, "JabberPoint.jpg"));
+    public Slide loadSlide3() {
+        Slide thirdSlide = new Slide();
+        thirdSlide.setTitle("The third slide");
+        thirdSlide.append(1, "To open a new presentation,");
+        thirdSlide.append(2, "use File->Open from the menu.");
+        thirdSlide.append(1, " ");
+        thirdSlide.append(1, "This is the end of the presentation.");
+        thirdSlide.append(new BitmapItem(1, "JabberPoint.jpg"));
+        return thirdSlide;
     }
 
 
