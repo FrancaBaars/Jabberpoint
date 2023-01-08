@@ -50,8 +50,7 @@ public class TextItem extends SlideItem {
     }
 
     //Returns the bounding box of an Item
-    public Rectangle getBoundingBox(Graphics g, ImageObserver observer,
-                                    float scale, Style myStyle) {
+    public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
         List<TextLayout> layouts = getLayouts(g, myStyle, scale);
         int xsize = 0, ysize = (int) (myStyle.getLeading() * scale);
         Iterator<TextLayout> iterator = layouts.iterator();
@@ -70,8 +69,7 @@ public class TextItem extends SlideItem {
     }
 
     //Draws the item
-    public void draw(int x, int y, float scale, Graphics g,
-                     Style myStyle, ImageObserver o) {
+    public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver o) {
         if (text == null || text.length() == 0) {
             return;
         }
@@ -90,7 +88,7 @@ public class TextItem extends SlideItem {
     }
 
     private List<TextLayout> getLayouts(Graphics g, Style s, float scale) {
-        List<TextLayout> layouts = new ArrayList<TextLayout>();
+        List<TextLayout> layouts = new ArrayList<>();
         AttributedString attrStr = getAttributedString(s, scale);
         Graphics2D g2d = (Graphics2D) g;
         FontRenderContext frc = g2d.getFontRenderContext();
