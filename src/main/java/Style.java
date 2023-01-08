@@ -27,12 +27,14 @@ public class Style {
         this.leading = leading;
     }
 
+    //methods
+    public String toString() {
+        return "[" + indent + "," + color + "; " + fontSize + " on " + leading + "]";
+    }
+
     //getters and setters
-    public static Style getStyle(int level) {
-        if (level >= StyleMaker.styles.length) {
-            level = StyleMaker.styles.length - 1;
-        }
-        return StyleMaker.styles[level];
+    public Font getFont(float scale) {
+        return font.deriveFont(fontSize * scale);
     }
 
     public int getIndent() {
@@ -49,10 +51,6 @@ public class Style {
 
     public void setColor(Color color) {
         this.color = color;
-    }
-
-    public Font getFont() {
-        return this.font;
     }
 
     public void setFont(Font font) {
@@ -73,14 +71,5 @@ public class Style {
 
     public void setLeading(int leading) {
         this.leading = leading;
-    }
-
-    //methods
-    public String toString() {
-        return "[" + indent + "," + color + "; " + fontSize + " on " + leading + "]";
-    }
-
-    public Font getFont(float scale) {
-        return font.deriveFont(fontSize * scale);
     }
 }
