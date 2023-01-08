@@ -4,15 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67450154-df3a-475c-81f3-098c682589fe" name="Changes" comment="">
+    <list default="true" id="67450154-df3a-475c-81f3-098c682589fe" name="Changes" comment="small changes with layout">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/JabberPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JabberPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Accessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Accessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DemoPresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DemoPresentation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -50,9 +58,16 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.folding&quot;
   }
 }</component>
-  <component name="RunManager">
-    <configuration name="JabberPoint" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.JabberPoint (1)">
+    <configuration name="JabberPoint (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="JabberPoint" />
+      <module name="Jabberpoint" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JabberPoint" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Jabberpoint.JabberPoint" />
       <module name="Jabberpoint" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -60,6 +75,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.JabberPoint (1)" />
         <item itemvalue="Application.JabberPoint" />
       </list>
     </recent_temporary>
@@ -73,7 +89,9 @@
       <option name="presentableId" value="Default" />
       <updated>1673095909193</updated>
       <workItem from="1673095911657" duration="15748000" />
-      <workItem from="1673171562839" duration="165000" />
+      <workItem from="1673171562839" duration="4444000" />
+      <workItem from="1673185777085" duration="3487000" />
+      <workItem from="1673199100547" duration="887000" />
     </task>
     <task id="LOCAL-00001" summary="Added workspace">
       <created>1673096218236</created>
@@ -138,7 +156,56 @@
       <option name="project" value="LOCAL" />
       <updated>1673125553765</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added this. to menuController.java">
+      <created>1673171765084</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1673171765084</updated>
+    </task>
+    <task id="LOCAL-00011" summary="auto formatter all documents">
+      <created>1673172589019</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1673172589019</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Moved createStyles to own class">
+      <created>1673172774995</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1673172774995</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Made the fields: indent, color, font, fontSize and leading in style private and added getters and setters">
+      <created>1673173628311</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1673173628312</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Moved getters and setter">
+      <created>1673173932415</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1673173932415</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Moved method for getStyle from Style.java to StyleMaker.java">
+      <created>1673173958717</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1673173958717</updated>
+    </task>
+    <task id="LOCAL-00016" summary="small changes with layout">
+      <created>1673185905771</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1673185905771</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,17 +259,13 @@
     <MESSAGE value="moved method what happens when someone presses save" />
     <MESSAGE value="moved method what happens when someone presses exit and next" />
     <MESSAGE value="moved method what happens when someone presses previous, help, go to page and open about" />
-    <option name="LAST_COMMIT_MESSAGE" value="moved method what happens when someone presses previous, help, go to page and open about" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/SlideViewerFrame.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="added this. to menuController.java" />
+    <MESSAGE value="auto formatter all documents" />
+    <MESSAGE value="Moved createStyles to own class" />
+    <MESSAGE value="Made the fields: indent, color, font, fontSize and leading in style private and added getters and setters" />
+    <MESSAGE value="Moved getters and setter" />
+    <MESSAGE value="Moved method for getStyle from Style.java to StyleMaker.java" />
+    <MESSAGE value="small changes with layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="small changes with layout" />
   </component>
 </project>
