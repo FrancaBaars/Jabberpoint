@@ -43,8 +43,8 @@ public class MenuController extends MenuBar {
     protected static final String SAVEERR = "Save Error";
 
     public MenuController(Frame frame, Presentation pres) {
-        parent = frame;
-        presentation = pres;
+        this.parent = frame;
+        this.presentation = pres;
         MenuItem menuItem;
 
         //file tab
@@ -93,31 +93,31 @@ public class MenuController extends MenuBar {
     }
 
     public void pressOpen() {
-        presentation.clear();
+        this.presentation.clear();
         Accessor xmlAccessor = new XMLAccessor();
         try {
-            xmlAccessor.loadFile(presentation, TESTFILE);
-            presentation.setSlideNumber(0);
+            xmlAccessor.loadFile(this.presentation, TESTFILE);
+            this.presentation.setSlideNumber(0);
         } catch (IOException exc) {
             JOptionPane.showMessageDialog(parent, IOEX + exc,
                     LOADERR, JOptionPane.ERROR_MESSAGE);
         }
-        parent.repaint();
+        this.parent.repaint();
     }
 
     public void pressNew() {
-        presentation.clear();
-        parent.repaint();
+        this.presentation.clear();
+        this.parent.repaint();
     }
 
     public void pressExit() {
-        presentation.exit(0);
+        this.presentation.exit(0);
     }
 
     public void pressSave() {
         Accessor xmlAccessor = new XMLAccessor();
         try {
-            xmlAccessor.saveFile(presentation, SAVEFILE);
+            xmlAccessor.saveFile(this.presentation, SAVEFILE);
         } catch (IOException exc) {
             JOptionPane.showMessageDialog(parent, IOEX + exc,
                     SAVEERR, JOptionPane.ERROR_MESSAGE);
@@ -129,13 +129,13 @@ public class MenuController extends MenuBar {
     }
 
     public void pressPrevious() {
-        presentation.prevSlide();
+        this.presentation.prevSlide();
     }
 
     public void goToPage() {
-        String pageNumberStr = JOptionPane.showInputDialog((Object) PAGENR);
+        String pageNumberStr = JOptionPane.showInputDialog(PAGENR);
         int pageNumber = Integer.parseInt(pageNumberStr);
-        presentation.setSlideNumber(pageNumber - 1);
+        this.presentation.setSlideNumber(pageNumber - 1);
     }
 
     public void openAboutBox() {
