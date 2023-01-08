@@ -55,12 +55,10 @@ public class XMLAccessor extends Accessor {
 
     }
 
-    public void loadFile(Presentation presentation, String filename) throws IOException {
-        int slideNumber, itemNumber, max = 0, maxItems = 0;
+    public void loadFile(Presentation presentation, String fileName) throws IOException {
+        int slideNumber, itemNumber, max, maxItems;
         try {
-            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            Document document = builder.parse(new File(filename)); //Create a JDOM document
-            Element doc = document.getDocumentElement();
+            Element doc = buildDocument(fileName);
             presentation.setTitle(getTitle(doc, SHOWTITLE));
 
             NodeList slides = doc.getElementsByTagName(SLIDE);
@@ -143,5 +141,11 @@ public class XMLAccessor extends Accessor {
         }
         out.println("</presentation>");
         out.close();
+    }
+    
+    public Element buildDocument(String fileName) throws ParserConfigurationException, IOException, SAXException {
+        DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        Document document = builder.parse(new File(fileName)); //Create a JDOM document
+        return document.getDocumentElement();
     }
 }
