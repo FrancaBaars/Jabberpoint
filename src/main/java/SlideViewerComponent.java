@@ -30,10 +30,10 @@ public class SlideViewerComponent extends JComponent {
     private static final int XPOS = 1100;
     private static final int YPOS = 20;
 
-    public SlideViewerComponent(Presentation pres, JFrame frame) {
-        setBackground(BGCOLOR);
-        presentation = pres;
-        labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
+    public SlideViewerComponent(Presentation presentation, JFrame frame) {
+        this.setBackground(BGCOLOR);
+        this.presentation = presentation;
+        this.labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
         this.frame = frame;
     }
 
@@ -42,28 +42,27 @@ public class SlideViewerComponent extends JComponent {
     }
 
     public void update(Presentation presentation, Slide data) {
+        repaint();
         if (data == null) {
-            repaint();
             return;
         }
         this.presentation = presentation;
         this.slide = data;
-        repaint();
-        frame.setTitle(presentation.getTitle());
+        this.frame.setTitle(presentation.getTitle());
     }
 
     //Draw the slide
-    public void paintComponent(Graphics g) {
-        g.setColor(BGCOLOR);
-        g.fillRect(0, 0, getSize().width, getSize().height);
+    public void paintComponent(Graphics graphics) {
+        graphics.setColor(BGCOLOR);
+        graphics.fillRect(0, 0, getSize().width, getSize().height);
         if (presentation.getSlideNumber() < 0 || slide == null) {
             return;
         }
-        g.setFont(labelFont);
-        g.setColor(COLOR);
-        g.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " +
+        graphics.setFont(labelFont);
+        graphics.setColor(COLOR);
+        graphics.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " +
                 presentation.getSize(), XPOS, YPOS);
         Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
-        slide.draw(g, area, this);
+        slide.draw(graphics, area, this);
     }
 }
