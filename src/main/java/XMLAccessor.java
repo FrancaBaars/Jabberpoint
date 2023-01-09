@@ -111,33 +111,26 @@ public class XMLAccessor extends Accessor {
 
     public void saveFile(Presentation presentation, String filename) throws IOException {
         PrintWriter out = new PrintWriter(new FileWriter(filename));
-        out.println("<?xml version=\"1.0\"?>");
-        out.println("<!DOCTYPE presentation SYSTEM \"jabberpoint.dtd\">");
-        out.println("<presentation>");
-        out.print("<showtitle>");
-        out.print(presentation.getTitle());
-        out.println("</showtitle>");
+        this.saveStartXMLFile(out);
+        this.saveTitlePresentation(out, presentation);
+
         for (int slideNumber = 0; slideNumber < presentation.getSize(); slideNumber++) {
             Slide slide = presentation.getSlide(slideNumber);
 
             out.println("<slide>");
 
-            this.saveTitle(slide, out);
+            this.saveTitleSlide(slide, out);
 
             Vector<SlideItem> slideItems = slide.getSlideItems();
-
             for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
 
                 SlideItem slideItem = slideItems.elementAt(itemNumber);
                 out.print("<item kind=");
-
                 if (slideItem instanceof TextItem) {
-
                     this.saveTextItem(out, slideItem);
                 } else {
                     if (slideItem instanceof BitmapItem) {
                         saveBitmapItem(out, slideItem);
-
                     } else {
                         System.out.println("Ignoring " + slideItem);
                     }
@@ -156,7 +149,7 @@ public class XMLAccessor extends Accessor {
         return document.getDocumentElement();
     }
 
-    private void saveTitle(Slide slide, PrintWriter out) {
+    private void saveTitleSlide(Slide slide, PrintWriter out) {
         out.println("<title>" + slide.getTitle() + "</title>");
     }
 
@@ -169,5 +162,18 @@ public class XMLAccessor extends Accessor {
         out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
         out.print(((BitmapItem) slideItem).getName());
     }
+
+    private void saveStartXMLFile(PrintWriter out) {
+        out.println("<?xml version=\"1.0\"?>");
+        out.println("<!DOCTYPE presentation SYSTEM \"jabberpoint.dtd\">");
+        out.println("<presentation>");
+    }
+
+    private void saveTitlePresentation(PrintWriter out, Presentation presentation) {
+        out.print("<showtitle>");
+        out.print(presentation.getTitle());
+        out.println("</showtitle>");
+    }
+
 
 }
