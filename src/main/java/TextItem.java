@@ -24,28 +24,36 @@ import java.util.ArrayList;
 public class TextItem extends SlideItem {
     private String text;
 
-    private static final String EMPTYTEXT = "No Text Given";
+    private static final String EMPTY_TEXT = "No Text Given";
 
     //A textitem of int level with text string
     public TextItem(int level, String string) {
         super(level);
-        text = string;
+        setText(string);
     }
 
     //An empty textitem
     public TextItem() {
-        this(0, EMPTYTEXT);
+        this(0, EMPTY_TEXT);
     }
 
     //Returns the text
     public String getText() {
-        return text == null ? "" : text;
+        return this.text == null ? "" : this.text;
+    }
+
+    public void setText(String text) {
+        if(text != null && !text.isEmpty()){
+            this.text = text;
+        }
     }
 
     //Returns the AttributedString for the Item
     public AttributedString getAttributedString(Style style, float scale) {
         AttributedString attrStr = new AttributedString(getText());
-        attrStr.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, text.length());
+        int lengthText = this.text.length();
+
+        attrStr.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, lengthText);
         return attrStr;
     }
 
@@ -69,14 +77,14 @@ public class TextItem extends SlideItem {
     }
 
     //Draws the item
-    public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver o) {
-        if (text == null || text.length() == 0) {
+    public void draw(int x, int y, float scale, Graphics graphics, Style myStyle, ImageObserver o) {
+        if (this.text == null || !this.text.isEmpty()) {
             return;
         }
-        List<TextLayout> layouts = getLayouts(g, myStyle, scale);
+        List<TextLayout> layouts = getLayouts(graphics, myStyle, scale);
         Point pen = new Point(x + (int) (myStyle.getIndent() * scale),
                 y + (int) (myStyle.getLeading() * scale));
-        Graphics2D g2d = (Graphics2D) g;
+        Graphics2D g2d = (Graphics2D) graphics;
         g2d.setColor(myStyle.getColor());
         Iterator<TextLayout> it = layouts.iterator();
         while (it.hasNext()) {
