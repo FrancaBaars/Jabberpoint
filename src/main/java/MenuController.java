@@ -43,8 +43,8 @@ public class MenuController extends MenuBar {
     protected static final String SAVEERR = "Save Error";
 
     public MenuController(Frame frame, Presentation pres) {
-        this.parent = frame;
-        this.presentation = pres;
+        setParent(frame);
+        setPresentation(pres);
         MenuItem menuItem;
 
         //file tab
@@ -92,54 +92,75 @@ public class MenuController extends MenuBar {
         setHelpMenu(helpMenu);        //Needed for portability (Motif, etc.).
     }
 
+    @Override
+    public Frame getParent() {
+        return this.parent;
+    }
+
+    public void setParent(Frame parent) {
+        if(parent != null) {
+            this.parent = parent;
+        }
+    }
+
+    public Presentation getPresentation() {
+        return this.presentation;
+    }
+
+    public void setPresentation(Presentation presentation) {
+        if(presentation != null) {
+            this.presentation = presentation;
+        }
+    }
+
     public void pressOpen() {
-        this.presentation.clear();
+        this.getPresentation().clear();
         Accessor xmlAccessor = new XMLAccessor();
         try {
-            xmlAccessor.loadFile(this.presentation, TESTFILE);
-            this.presentation.setSlideNumber(0);
+            xmlAccessor.loadFile(this.getPresentation(), TESTFILE);
+            this.getPresentation().setSlideNumber(0);
         } catch (IOException exc) {
-            JOptionPane.showMessageDialog(parent, IOEX + exc,
+            JOptionPane.showMessageDialog(this.getParent(), IOEX + exc,
                     LOADERR, JOptionPane.ERROR_MESSAGE);
         }
-        this.parent.repaint();
+        this.getParent().repaint();
     }
 
     public void pressNew() {
-        this.presentation.clear();
-        this.parent.repaint();
+        this.getPresentation().clear();
+        this.getParent().repaint();
     }
 
     public void pressExit() {
-        this.presentation.exit(0);
+        this.getPresentation().exit(0);
     }
 
     public void pressSave() {
         Accessor xmlAccessor = new XMLAccessor();
         try {
-            xmlAccessor.saveFile(this.presentation, SAVEFILE);
+            xmlAccessor.saveFile(this.getPresentation(), SAVEFILE);
         } catch (IOException exc) {
-            JOptionPane.showMessageDialog(parent, IOEX + exc,
+            JOptionPane.showMessageDialog(this.getParent(), IOEX + exc,
                     SAVEERR, JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public void pressNext() {
-        this.presentation.nextSlide();
+        this.getPresentation().nextSlide();
     }
 
     public void pressPrevious() {
-        this.presentation.prevSlide();
+        this.getPresentation().prevSlide();
     }
 
     public void goToPage() {
         String pageNumberStr = JOptionPane.showInputDialog(PAGENR);
         int pageNumber = Integer.parseInt(pageNumberStr);
-        this.presentation.setSlideNumber(pageNumber - 1);
+        this.getPresentation().setSlideNumber(pageNumber - 1);
     }
 
     public void openAboutBox() {
-        AboutBox.show(parent);
+        AboutBox.show(this.getParent());
     }
 
 
