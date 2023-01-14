@@ -48,7 +48,7 @@ public class TextItem extends SlideItem {
     //Returns the AttributedString for the Item
     public AttributedString getAttributedString(Style style, float scale) {
         AttributedString attrStr = new AttributedString(getText());
-        int lengthText = this.text.length();
+        int lengthText = this.getText().length();
 
         attrStr.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, lengthText);
         return attrStr;
