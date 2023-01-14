@@ -32,9 +32,50 @@ public class SlideViewerComponent extends JComponent {
 
     public SlideViewerComponent(Presentation presentation, JFrame frame) {
         this.setBackground(BGCOLOR);
-        this.presentation = presentation;
-        this.labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
-        this.frame = frame;
+        this.setPresentation(presentation);
+        this.setLabelFont(new Font(FONTNAME, FONTSTYLE, FONTHEIGHT));
+        this.setFrame(frame);
+    }
+
+    //getters and setters
+    public Slide getSlide() {
+        return this.slide;
+    }
+
+    public void setSlide(Slide slide) {
+        if (slide != null) {
+            this.slide = slide;
+        }
+    }
+
+    public Font getLabelFont() {
+        return this.labelFont;
+    }
+
+    public void setLabelFont(Font labelFont) {
+        if (labelFont != null) {
+            this.labelFont = labelFont;
+        }
+    }
+
+    public Presentation getPresentation() {
+        return this.presentation;
+    }
+
+    public void setPresentation(Presentation presentation) {
+        if (presentation != null) {
+            this.presentation = presentation;
+        }
+    }
+
+    public JFrame getFrame() {
+        return this.frame;
+    }
+
+    public void setFrame(JFrame frame) {
+        if (frame != null) {
+            this.frame = frame;
+        }
     }
 
     public Dimension getPreferredSize() {
@@ -46,23 +87,22 @@ public class SlideViewerComponent extends JComponent {
         if (data == null) {
             return;
         }
-        this.presentation = presentation;
-        this.slide = data;
-        this.frame.setTitle(presentation.getTitle());
+        this.setPresentation(presentation);
+        this.setSlide(data);
+        this.getFrame().setTitle(presentation.getTitle());
     }
 
     //Draw the slide
     public void paintComponent(Graphics graphics) {
         graphics.setColor(BGCOLOR);
         graphics.fillRect(0, 0, getSize().width, getSize().height);
-        if (presentation.getCurrentSlideNumber() < 0 || slide == null) {
+        if (this.getPresentation().getCurrentSlideNumber() < 0 || this.getSlide() == null) {
             return;
         }
-        graphics.setFont(labelFont);
+        graphics.setFont(this.getLabelFont());
         graphics.setColor(COLOR);
-        graphics.drawString("Slide " + (1 + presentation.getCurrentSlideNumber()) + " of " +
-                presentation.getSize(), XPOS, YPOS);
+        graphics.drawString("Slide " + (1 + this.getPresentation().getCurrentSlideNumber()) + " of " + this.getPresentation().getSize(), XPOS, YPOS);
         Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
-        slide.draw(graphics, area, this);
+        this.getSlide().draw(graphics, area, this);
     }
 }
