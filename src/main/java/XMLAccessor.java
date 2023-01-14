@@ -160,7 +160,7 @@ public class XMLAccessor extends Accessor {
 
     private void saveBitmapItem(PrintWriter out, SlideItem slideItem) {
         out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
-        out.print(((BitmapItem) slideItem).getName());
+        out.print(((BitmapItem) slideItem).getImageName());
     }
 
     private void saveStartXMLFile(PrintWriter out) {
