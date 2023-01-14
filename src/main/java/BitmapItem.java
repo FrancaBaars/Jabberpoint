@@ -56,7 +56,9 @@ public class BitmapItem extends SlideItem {
     }
 
     public void setBufferedImage(BufferedImage bufferedImage) {
-        this.bufferedImage = bufferedImage;
+        if(bufferedImage != null){
+            this.bufferedImage = bufferedImage;
+        }
     }
 
     //Returns the bounding box of the image

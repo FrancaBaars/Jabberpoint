@@ -12,7 +12,17 @@ public class KeyController extends KeyAdapter {
     private Presentation presentation; //Commands are given to the presentation
 
     public KeyController(Presentation p) {
-        presentation = p;
+       setPresentation(p);
+    }
+
+    public Presentation getPresentation() {
+        return this.presentation;
+    }
+
+    public void setPresentation(Presentation presentation) {
+        if (presentation != null) {
+            this.presentation = presentation;
+        }
     }
 
     public void keyPressed(KeyEvent keyEvent) {
@@ -21,12 +31,12 @@ public class KeyController extends KeyAdapter {
             case KeyEvent.VK_DOWN:
             case KeyEvent.VK_ENTER:
             case '+':
-                presentation.nextSlide();
+                this.getPresentation().nextSlide();
                 break;
             case KeyEvent.VK_PAGE_UP:
             case KeyEvent.VK_UP:
             case '-':
-                presentation.prevSlide();
+                this.getPresentation().prevSlide();
                 break;
             case 'q':
             case 'Q':
