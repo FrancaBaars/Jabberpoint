@@ -32,7 +32,9 @@ public class Presentation {
     }
 
     public void setTitle(String newTitle) {
-        this.title = newTitle;
+        if (newTitle != null && !newTitle.isEmpty()) {
+            this.title = newTitle;
+        }
     }
 
     public ArrayList<Slide> getShowList() {
@@ -45,7 +47,9 @@ public class Presentation {
     }
 
     public void setCurrentSlideNumber(int currentSlideNumber) {
-        this.currentSlideNumber = currentSlideNumber;
+        if(currentSlideNumber >= 0) {
+            this.currentSlideNumber = currentSlideNumber;
+        }
     }
 
     public SlideViewerComponent getSlideViewComponent() {
