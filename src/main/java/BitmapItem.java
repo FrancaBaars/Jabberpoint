@@ -27,11 +27,11 @@ public class BitmapItem extends SlideItem {
     //level indicates the item-level; name indicates the name of the file with the image
     public BitmapItem(int level, String name) {
         super(level);
-        imageName = name;
+        setImageName(name);
         try {
-            bufferedImage = ImageIO.read(new File(imageName));
+            setBufferedImage(ImageIO.read(new File(this.getImageName())));
         } catch (IOException e) {
-            System.err.println(FILE + imageName + NOTFOUND);
+            System.err.println(FILE + this.getImageName() + NOTFOUND);
         }
     }
 
@@ -41,15 +41,29 @@ public class BitmapItem extends SlideItem {
     }
 
     //Returns the filename of the image
-    public String getName() {
-        return imageName;
+    public String getImageName() {
+        return this.imageName;
+    }
+
+    public void setImageName(String imageName) {
+        if(imageName != null && !imageName.isEmpty()) {
+            this.imageName = imageName;
+        }
+    }
+
+    public BufferedImage getBufferedImage() {
+        return this.bufferedImage;
+    }
+
+    public void setBufferedImage(BufferedImage bufferedImage) {
+        this.bufferedImage = bufferedImage;
     }
 
     //Returns the bounding box of the image
     public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
         int x = (int) (myStyle.getIndent() * scale);
-        int width = (int) (bufferedImage.getWidth(observer) * scale);
-        int height = ((int) (myStyle.getLeading() * scale)) + (int) (bufferedImage.getHeight(observer) * scale);
+        int width = (int) (this.getBufferedImage().getWidth(observer) * scale);
+        int height = ((int) (myStyle.getLeading() * scale)) + (int) (this.getBufferedImage().getHeight(observer) * scale);
         return new Rectangle(x, 0, width, height);
     }
 
@@ -57,13 +71,13 @@ public class BitmapItem extends SlideItem {
     public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
         int xDrawImage = x + (int) (myStyle.getIndent() * scale);
         int yDrawImage = y + (int) (myStyle.getLeading() * scale);
-        int width = (int) (bufferedImage.getWidth(observer) * scale);
-        int height = (int) (bufferedImage.getHeight(observer) * scale);
+        int width = (int) (this.getBufferedImage().getWidth(observer) * scale);
+        int height = (int) (this.getBufferedImage().getHeight(observer) * scale);
 
-        g.drawImage(bufferedImage, xDrawImage, yDrawImage, width ,height, observer);
+        g.drawImage(this.getBufferedImage(), xDrawImage, yDrawImage, width, height, observer);
     }
 
     public String toString() {
-        return "BitmapItem[" + getLevel() + "," + imageName + "]";
+        return "BitmapItem[" + getLevel() + "," + this.getImageName() + "]";
     }
 }
