@@ -12,7 +12,7 @@ import java.awt.Font;
  */
 
 public class Style {
-    private static final String FONTNAME = "Helvetica";
+    private static final String FONT_NAME = "Helvetica";
     private int indent;
     private Color color;
     private Font font;
@@ -21,20 +21,21 @@ public class Style {
 
     //constructor
     public Style(int indent, Color color, int points, int leading) {
-        this.indent = indent;
-        this.color = color;
-        this.font = new Font(FONTNAME, Font.BOLD, fontSize = points);
-        this.leading = leading;
+        this.setIndent(indent);
+        this.setColor(color);
+        this.setFontSize(points);
+        this.setFont(new Font(FONT_NAME, Font.BOLD, points));
+        this.setLeading(leading);
     }
 
     //methods
     public String toString() {
-        return "[" + indent + "," + color + "; " + fontSize + " on " + leading + "]";
+        return "[" + this.getIndent() + "," + this.getColor() + "; " + this.getFontSize() + " on " + this.getLeading() + "]";
     }
 
     //getters and setters
     public Font getFont(float scale) {
-        return font.deriveFont(fontSize * scale);
+        return font.deriveFont(this.getFontSize() * scale);
     }
 
     public int getIndent() {
@@ -50,11 +51,15 @@ public class Style {
     }
 
     public void setColor(Color color) {
-        this.color = color;
+        if (color != null) {
+            this.color = color;
+        }
     }
 
     public void setFont(Font font) {
-        this.font = font;
+        if (font != null) {
+            this.font = font;
+        }
     }
 
     public int getFontSize() {
