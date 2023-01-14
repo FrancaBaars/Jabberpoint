@@ -1,10 +1,8 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
-
-import javax.imageio.ImageIO;
-
 import java.io.IOException;
 
 
@@ -27,9 +25,9 @@ public class BitmapItem extends SlideItem {
     //level indicates the item-level; name indicates the name of the file with the image
     public BitmapItem(int level, String name) {
         super(level);
-        setImageName(name);
+        this.setImageName(name);
         try {
-            setBufferedImage(ImageIO.read(new File(this.getImageName())));
+            this.setBufferedImage(ImageIO.read(new File(this.getImageName())));
         } catch (IOException e) {
             System.err.println(FILE + this.getImageName() + NOTFOUND);
         }
@@ -46,7 +44,7 @@ public class BitmapItem extends SlideItem {
     }
 
     public void setImageName(String imageName) {
-        if(imageName != null && !imageName.isEmpty()) {
+        if (imageName != null && !imageName.isEmpty()) {
             this.imageName = imageName;
         }
     }
@@ -56,7 +54,7 @@ public class BitmapItem extends SlideItem {
     }
 
     public void setBufferedImage(BufferedImage bufferedImage) {
-        if(bufferedImage != null){
+        if (bufferedImage != null) {
             this.bufferedImage = bufferedImage;
         }
     }

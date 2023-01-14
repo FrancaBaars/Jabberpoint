@@ -1,5 +1,4 @@
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.util.Vector;
 
@@ -13,18 +12,15 @@ import java.util.Vector;
 public class Slide {
     public final static int WIDTH = 1200;
     public final static int HEIGHT = 800;
-    protected String title; //The title is kept separately
-    protected Vector<SlideItem> items; //The SlideItems are kept in a vector
+    private String title; //The title is kept separately
+    private Vector<SlideItem> slideItems; //The SlideItems are kept in a vector
 
+    //constructor
     public Slide() {
-        items = new Vector<SlideItem>();
+        this.slideItems = new Vector<>();
     }
 
-    //Add a SlideItem
-    public void append(SlideItem anItem) {
-        items.addElement(anItem);
-    }
-
+    //getters and setters
     //Return the title of a slide
     public String getTitle() {
         return title;
@@ -32,7 +28,21 @@ public class Slide {
 
     //Change the title of a slide
     public void setTitle(String newTitle) {
-        title = newTitle;
+        this.title = newTitle;
+    }
+
+    //Return all the SlideItems in a vector
+    public Vector<SlideItem> getSlideItems() {
+        return this.slideItems;
+    }
+
+    public void setSlideItems(Vector<SlideItem> slideItems) {
+        this.slideItems = slideItems;
+    }
+
+    //Add a SlideItem
+    public void append(SlideItem anItem) {
+        this.getSlideItems().addElement(anItem);
     }
 
     //Create a TextItem out of a String and add the TextItem
@@ -42,17 +52,13 @@ public class Slide {
 
     //Returns the SlideItem
     public SlideItem getSlideItem(int number) {
-        return this.items.elementAt(number);
+        return this.getSlideItems().elementAt(number);
     }
 
-    //Return all the SlideItems in a vector
-    public Vector<SlideItem> getSlideItems() {
-        return this.items;
-    }
 
     //Returns the size of a slide
     public int getSize() {
-        return this.items.size();
+        return this.getSlideItems().size();
     }
 
     //Draws the slide
