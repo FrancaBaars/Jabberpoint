@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class StyleMaker {
-    public static Style[] styles; // de styles
+    private static Style[] styles; // de styles
 
     public static void createStyles() {
         styles = new Style[5];
