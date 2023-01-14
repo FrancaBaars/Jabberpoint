@@ -18,6 +18,8 @@ public class MenuController extends MenuBar {
     private Frame parent; //The frame, only used as parent for the Dialogs
     private Presentation presentation; //Commands are given to the presentation
 
+    private MenuItem menuItem;
+
     private static final long SERIAL_VERSION_UID = 227L;
 
     private static final String ABOUT = "About";
@@ -40,54 +42,10 @@ public class MenuController extends MenuBar {
     private static final String LOAD_ERROR = "Load Error";
     private static final String SAVE_ERROR = "Save Error";
 
-    public MenuController(Frame frame, Presentation pres) {
-        setParent(frame);
-        setPresentation(pres);
-        MenuItem menuItem;
-
-        //file tab
-        Menu fileMenu = new Menu(FILE);
-        //press open
-        fileMenu.add(menuItem = mkMenuItem(OPEN));
-        menuItem.addActionListener(actionEvent -> this.pressOpen());
-
-        //press new
-        fileMenu.add(menuItem = mkMenuItem(NEW));
-        menuItem.addActionListener(actionEvent -> this.pressNew());
-
-        //press save
-        fileMenu.add(menuItem = mkMenuItem(SAVE));
-        menuItem.addActionListener(actionEvent -> this.pressSave());
-
-        //press exit
-        fileMenu.addSeparator();
-        fileMenu.add(menuItem = mkMenuItem(EXIT));
-        menuItem.addActionListener(actionEvent -> this.pressExit());
-
-        //new tab
-        add(fileMenu);
-        Menu viewMenu = new Menu(VIEW);
-
-        //press next
-        viewMenu.add(menuItem = mkMenuItem(NEXT));
-        menuItem.addActionListener(actionEvent -> this.pressNext());
-
-        viewMenu.add(menuItem = mkMenuItem(PREV));
-        menuItem.addActionListener(actionEvent -> this.pressPrevious());
-
-        //go to page number
-        viewMenu.add(menuItem = mkMenuItem(GOTO));
-        menuItem.addActionListener(actionEvent -> this.goToPage());
-
-
-        add(viewMenu);
-        Menu helpMenu = new Menu(HELP);
-
-        //press about
-        helpMenu.add(menuItem = mkMenuItem(ABOUT));
-        menuItem.addActionListener(actionEvent -> this.openAboutBox());
-
-        setHelpMenu(helpMenu);        //Needed for portability (Motif, etc.).
+    public MenuController(Frame parentFrame, Presentation presentation) {
+        this.setParent(parentFrame);
+        this.setPresentation(presentation);
+        this.makeMenu();
     }
 
     @Override
@@ -96,7 +54,7 @@ public class MenuController extends MenuBar {
     }
 
     public void setParent(Frame parent) {
-        if(parent != null) {
+        if (parent != null) {
             this.parent = parent;
         }
     }
@@ -106,12 +64,85 @@ public class MenuController extends MenuBar {
     }
 
     public void setPresentation(Presentation presentation) {
-        if(presentation != null) {
+        if (presentation != null) {
             this.presentation = presentation;
         }
     }
 
-    public void pressOpen() {
+    public MenuItem getMenuItem() {
+        return this.menuItem;
+    }
+
+    public void setMenuItem(MenuItem menuItem) {
+        if (menuItem != null) {
+            this.menuItem = menuItem;
+        }
+    }
+
+    private void makeMenu() {
+        this.makeFileTab();
+        this.makeViewTab();
+        this.makeHelpTab();
+
+    }
+
+    private void makeFileTab() {
+        //file tab
+        Menu fileMenu = new Menu(FILE);
+        //press open
+        this.addToMenu(fileMenu, OPEN);
+        this.getMenuItem().addActionListener(actionEvent -> this.pressOpen());
+
+        //press new
+        this.addToMenu(fileMenu, NEW);
+        this.getMenuItem().addActionListener(actionEvent -> this.pressNew());
+
+        //press save
+        this.addToMenu(fileMenu, SAVE);
+        this.getMenuItem().addActionListener(actionEvent -> this.pressSave());
+
+        //press exit
+        fileMenu.addSeparator();
+        this.addToMenu(fileMenu, EXIT);
+        this.getMenuItem().addActionListener(actionEvent -> this.pressExit());
+
+        //new tab
+        add(fileMenu);
+    }
+
+    private void makeViewTab() {
+        Menu viewMenu = new Menu(VIEW);
+        //press next
+        this.addToMenu(viewMenu, NEXT);
+        this.getMenuItem().addActionListener(actionEvent -> this.pressNext());
+
+        this.addToMenu(viewMenu, PREV);
+        this.getMenuItem().addActionListener(actionEvent -> this.pressPrevious());
+
+        //go to page number
+        this.addToMenu(viewMenu, GOTO);
+        this.getMenuItem().addActionListener(actionEvent -> this.goToPage());
+
+        add(viewMenu);
+    }
+
+    private void makeHelpTab() {
+        Menu helpMenu = new Menu(HELP);
+
+        //press about
+        this.addToMenu(helpMenu, ABOUT);
+        this.getMenuItem().addActionListener(actionEvent -> this.openAboutBox());
+
+        setHelpMenu(helpMenu);        //Needed for portability (Motif, etc.).
+    }
+
+    private void addToMenu(Menu menu, String name) {
+        this.setMenuItem(mkMenuItem(name));
+        menu.add(this.getMenuItem());
+    }
+
+
+    private void pressOpen() {
         this.getPresentation().clear();
         Accessor xmlAccessor = new XMLAccessor();
         try {
@@ -124,16 +155,16 @@ public class MenuController extends MenuBar {
         this.getParent().repaint();
     }
 
-    public void pressNew() {
+    private void pressNew() {
         this.getPresentation().clear();
         this.getParent().repaint();
     }
 
-    public void pressExit() {
+    private void pressExit() {
         this.getPresentation().exit(0);
     }
 
-    public void pressSave() {
+    private void pressSave() {
         Accessor xmlAccessor = new XMLAccessor();
         try {
             xmlAccessor.saveFile(this.getPresentation(), SAVED_FILE);
@@ -143,21 +174,21 @@ public class MenuController extends MenuBar {
         }
     }
 
-    public void pressNext() {
+    private void pressNext() {
         this.getPresentation().nextSlide();
     }
 
-    public void pressPrevious() {
+    private void pressPrevious() {
         this.getPresentation().prevSlide();
     }
 
-    public void goToPage() {
+    private void goToPage() {
         String pageNumberStr = JOptionPane.showInputDialog(PAGE_NUMBER);
         int pageNumber = Integer.parseInt(pageNumberStr);
         this.getPresentation().setSlideNumber(pageNumber - 1);
     }
 
-    public void openAboutBox() {
+    private void openAboutBox() {
         AboutBox.show(this.getParent());
     }
 
