@@ -13,7 +13,7 @@ public class Presentation {
     private String showTitle; //The title of the presentation
     private ArrayList<Slide> showList = null; //An ArrayList with slides
     private int currentSlideNumber = 0; //The number of the current slide
-    private SlideViewerComponent slideViewComponent = null; //The view component of the slides
+    private SlideViewerComponent slideViewComponent; //The view component of the slides
 
     public Presentation() {
         this.slideViewComponent = null;
@@ -81,7 +81,7 @@ public class Presentation {
 
     //Return a slide with a specific number
     public Slide getSlide(int number) {
-        if (number < 0 || number >= getSize()) {
+        if (number < 0 || number >= this.getSize()) {
             return null;
         }
         return this.showList.get(number);
@@ -89,7 +89,7 @@ public class Presentation {
 
     //Return the current slide
     public Slide getCurrentSlide() {
-        return getSlide(this.currentSlideNumber);
+        return this.getSlide(this.currentSlideNumber);
     }
 
     public void exit(int n) {
