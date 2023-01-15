@@ -64,6 +64,7 @@ public class BitmapItem extends SlideItem {
         int x = (int) (myStyle.getIndent() * scale);
         int width = (int) (this.getBufferedImage().getWidth(observer) * scale);
         int height = ((int) (myStyle.getLeading() * scale)) + (int) (this.getBufferedImage().getHeight(observer) * scale);
+
         return new Rectangle(x, 0, width, height);
     }
 
@@ -78,6 +79,6 @@ public class BitmapItem extends SlideItem {
     }
 
     public String toString() {
-        return "BitmapItem[" + getLevel() + "," + this.getImageName() + "]";
+        return "BitmapItem[" + this.getLevel() + "," + this.getImageName() + "]";
     }
 }
