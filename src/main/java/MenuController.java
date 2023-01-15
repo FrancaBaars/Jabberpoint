@@ -20,8 +20,6 @@ public class MenuController extends MenuBar {
 
     private MenuItem menuItem;
 
-    private static final long SERIAL_VERSION_UID = 227L;
-
     private static final String ABOUT = "About";
     private static final String FILE = "File";
     private static final String EXIT = "Exit";
@@ -184,7 +182,14 @@ public class MenuController extends MenuBar {
 
     private void goToPage() {
         String pageNumberStr = JOptionPane.showInputDialog(PAGE_NUMBER);
+        if (pageNumberStr == null || pageNumberStr.isEmpty()) {
+            return;
+        }
+
         int pageNumber = Integer.parseInt(pageNumberStr);
+        if (pageNumber > this.getPresentation().getSize()) {
+            return;
+        }
         this.getPresentation().setSlideNumber(pageNumber - 1);
     }
 
@@ -194,6 +199,7 @@ public class MenuController extends MenuBar {
 
 
     //Creating a menu-item
+    //dit moet misschien in een factory of zoiets niet echt te verantwoordelijkheid van dit bestand
     public MenuItem mkMenuItem(String name) {
         return new MenuItem(name, new MenuShortcut(name.charAt(0)));
     }
