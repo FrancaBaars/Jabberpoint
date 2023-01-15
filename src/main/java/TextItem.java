@@ -7,7 +7,6 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.ImageObserver;
 import java.text.AttributedString;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -20,6 +19,7 @@ import java.util.List;
 
 public class TextItem extends SlideItem {
     private String text;
+    private List<TextLayout> layouts;
 
     private static final String EMPTY_TEXT = "No Text Given";
 
@@ -45,6 +45,14 @@ public class TextItem extends SlideItem {
         }
     }
 
+    public List<TextLayout> getLayouts() {
+        return this.layouts;
+    }
+
+    public void setLayouts(List<TextLayout> layouts) {
+        this.layouts = layouts;
+    }
+
     //Returns the AttributedString for the Item
     public AttributedString getAttributedString(Style style, float scale) {
         AttributedString attrStr = new AttributedString(getText());
@@ -55,18 +63,22 @@ public class TextItem extends SlideItem {
     }
 
     //Returns the bounding box of an Item
-    public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-        List<TextLayout> layouts = getLayouts(g, myStyle, scale);
-        int xsize = 0, ysize = (int) (myStyle.getLeading() * scale);
-        Iterator<TextLayout> iterator = layouts.iterator();
-        while (iterator.hasNext()) {
-            TextLayout layout = iterator.next();
+    public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale, Style myStyle) {
+        this.setLayouts(this.getLayouts(graphics, myStyle, scale));
+
+        int xsize = 0;
+        int ysize = (int) (myStyle.getLeading() * scale);
+
+        for (TextLayout layout : layouts) {
             Rectangle2D bounds = layout.getBounds();
-            if (bounds.getWidth() > xsize) {
-                xsize = (int) bounds.getWidth();
+            int width = (int) bounds.getWidth();
+            int height = (int) bounds.getHeight();
+
+            if (width > xsize) {
+                xsize = width;
             }
-            if (bounds.getHeight() > 0) {
-                ysize += bounds.getHeight();
+            if (height > 0) {
+                ysize += height;
             }
             ysize += layout.getLeading() + layout.getDescent();
         }
@@ -74,36 +86,40 @@ public class TextItem extends SlideItem {
     }
 
     //Draws the item
-    public void draw(int x, int y, float scale, Graphics graphics, Style myStyle, ImageObserver o) {
+    public void draw(int x, int y, float scale, Graphics graphics, Style myStyle, ImageObserver imageObserver) {
         if (this.text == null || this.text.isEmpty()) {
             return;
         }
-        List<TextLayout> layouts = getLayouts(graphics, myStyle, scale);
-        Point pen = new Point(x + (int) (myStyle.getIndent() * scale),
-                y + (int) (myStyle.getLeading() * scale));
-        Graphics2D g2d = (Graphics2D) graphics;
-        g2d.setColor(myStyle.getColor());
-        Iterator<TextLayout> it = layouts.iterator();
-        while (it.hasNext()) {
-            TextLayout layout = it.next();
-            pen.y += layout.getAscent();
-            layout.draw(g2d, pen.x, pen.y);
-            pen.y += layout.getDescent();
+        this.setLayouts(this.getLayouts(graphics, myStyle, scale));
+
+        int xPoint = x + (int) (myStyle.getIndent() * scale);
+        int yPoint = y + (int) (myStyle.getLeading() * scale);
+
+        Graphics2D graphics2D = (Graphics2D) graphics;
+
+        graphics2D.setColor(myStyle.getColor());
+        for (TextLayout layout : layouts) {
+            yPoint += layout.getAscent();
+            layout.draw(graphics2D, xPoint, yPoint);
+            yPoint += layout.getDescent();
         }
     }
 
-    private List<TextLayout> getLayouts(Graphics g, Style s, float scale) {
-        List<TextLayout> layouts = new ArrayList<>();
-        AttributedString attrStr = getAttributedString(s, scale);
-        Graphics2D g2d = (Graphics2D) g;
-        FontRenderContext frc = g2d.getFontRenderContext();
+    private List<TextLayout> getLayouts(Graphics graphics, Style style, float scale) {
+        this.layouts = new ArrayList<>();
+
+        AttributedString attrStr = this.getAttributedString(style, scale);
+        Graphics2D graphics2D = (Graphics2D) graphics;
+
+        FontRenderContext frc = graphics2D.getFontRenderContext();
         LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
-        float wrappingWidth = (Slide.WIDTH - s.getIndent()) * scale;
+        float wrappingWidth = (Slide.WIDTH - style.getIndent()) * scale;
+
         while (measurer.getPosition() < getText().length()) {
             TextLayout layout = measurer.nextLayout(wrappingWidth);
-            layouts.add(layout);
+            this.layouts.add(layout);
         }
-        return layouts;
+        return this.layouts;
     }
 
     public String toString() {
