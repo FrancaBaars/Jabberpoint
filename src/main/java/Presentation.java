@@ -17,13 +17,13 @@ public class Presentation {
 
     //constructors
     public Presentation() {
-        setSlideViewComponent(null);
-        clear();
+        this.setSlideViewComponent(null);
+        this.clear();
     }
 
     public Presentation(SlideViewerComponent slideViewerComponent) {
-        setSlideViewComponent(slideViewerComponent);
-        clear();
+        this.setSlideViewComponent(slideViewerComponent);
+        this.clear();
     }
 
     //getters and setters
@@ -87,7 +87,7 @@ public class Presentation {
     }
 
     //Remove the presentation
-    void clear() {
+    public void clear() {
         this.showList = new ArrayList<>();
         this.setSlideNumber(-1);
     }
