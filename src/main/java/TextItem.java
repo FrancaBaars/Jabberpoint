@@ -64,7 +64,7 @@ public class TextItem extends SlideItem {
 
     //Returns the bounding box of an Item
     public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale, Style myStyle) {
-        this.setLayouts(this.getLayouts(graphics, myStyle, scale));
+        this.getLayouts(graphics, myStyle, scale);
 
         int xsize = 0;
         int ysize = (int) (myStyle.getLeading() * scale);
@@ -90,7 +90,7 @@ public class TextItem extends SlideItem {
         if (this.text == null || this.text.isEmpty()) {
             return;
         }
-        this.setLayouts(this.getLayouts(graphics, myStyle, scale));
+        this.getLayouts(graphics, myStyle, scale);
 
         int xPoint = x + (int) (myStyle.getIndent() * scale);
         int yPoint = y + (int) (myStyle.getLeading() * scale);
@@ -105,7 +105,7 @@ public class TextItem extends SlideItem {
         }
     }
 
-    private List<TextLayout> getLayouts(Graphics graphics, Style style, float scale) {
+    private void getLayouts(Graphics graphics, Style style, float scale) {
         this.layouts = new ArrayList<>();
 
         AttributedString attrStr = this.getAttributedString(style, scale);
@@ -119,10 +119,9 @@ public class TextItem extends SlideItem {
             TextLayout layout = measurer.nextLayout(wrappingWidth);
             this.layouts.add(layout);
         }
-        return this.layouts;
     }
 
     public String toString() {
-        return "TextItem[" + getLevel() + "," + getText() + "]";
+        return "TextItem[" + this.getLevel() + "," + this.getText() + "]";
     }
 }
