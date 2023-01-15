@@ -23,31 +23,25 @@ import org.w3c.dom.NodeList;
  */
 
 public class XMLAccessor extends Accessor {
-
-    /**
-     * Default API to use.
-     */
-    protected static final String DEFAULT_API_TO_USE = "dom";
-
     /**
      * Names of xml tags of attributes
      */
-    protected static final String SHOWTITLE = "showtitle";
-    protected static final String SLIDETITLE = "title";
-    protected static final String SLIDE = "slide";
-    protected static final String ITEM = "item";
-    protected static final String LEVEL = "level";
-    protected static final String KIND = "kind";
-    protected static final String TEXT = "text";
-    protected static final String IMAGE = "image";
+    private static final String SHOWTITLE = "showtitle";
+    private static final String SLIDETITLE = "title";
+    private static final String SLIDE = "slide";
+    private static final String ITEM = "item";
+    private static final String LEVEL = "level";
+    private static final String KIND = "kind";
+    private static final String TEXT = "text";
+    private static final String IMAGE = "image";
 
     /**
      * Text of messages
      */
-    protected static final String PCE = "Parser Configuration Exception";
-    protected static final String UNKNOWNTYPE = "Unknown Element type";
-    protected static final String NFE = "Number Format Exception";
-    public static final int DEFAULT_LEVEL = 1;
+    private static final String PCE = "Parser Configuration Exception";
+    private static final String UNKNOWNTYPE = "Unknown Element type";
+    private static final String NFE = "Number Format Exception";
+    private static final int DEFAULT_LEVEL = 1;
 
 
     private String getTitle(Element element, String tagName) {
@@ -174,6 +168,4 @@ public class XMLAccessor extends Accessor {
         out.print(presentation.getTitle());
         out.println("</showtitle>");
     }
-
-
 }
