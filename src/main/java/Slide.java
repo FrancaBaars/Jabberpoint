@@ -36,18 +36,14 @@ public class Slide {
         return this.slideItems;
     }
 
-    public void setSlideItems(Vector<SlideItem> slideItems) {
-        this.slideItems = slideItems;
-    }
-
     //Add a SlideItem
-    public void append(SlideItem anItem) {
+    public void addSlideItem(SlideItem anItem) {
         this.getSlideItems().addElement(anItem);
     }
 
     //Create a TextItem out of a String and add the TextItem
-    public void append(int level, String message) {
-        append(new TextItem(level, message));
+    public void addSlideItem(int level, String message) {
+        addSlideItem(new TextItem(level, message));
     }
 
     //Returns the SlideItem
