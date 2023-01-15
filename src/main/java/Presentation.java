@@ -68,7 +68,7 @@ public class Presentation {
     public void setSlideNumber(int number) {
         this.setCurrentSlideNumber(number);
         if (this.getSlideViewComponent() != null) {
-            this.getSlideViewComponent().update(this, getCurrentSlide());
+            this.getSlideViewComponent().update(this.getCurrentSlide(), this.getTitle(), this.getShowList().size(), this.getCurrentSlideNumber());
         }
     }
 
