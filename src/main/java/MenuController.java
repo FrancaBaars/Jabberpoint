@@ -135,7 +135,7 @@ public class MenuController extends MenuBar {
     }
 
     private void addToMenu(Menu menu, String name) {
-        this.setMenuItem(mkMenuItem(name));
+        this.setMenuItem(MenuControllerFactory.makeMenuItem(name));
         menu.add(this.getMenuItem());
     }
 
@@ -195,12 +195,5 @@ public class MenuController extends MenuBar {
 
     private void openAboutBox() {
         AboutBox.show(this.getParent());
-    }
-
-
-    //Creating a menu-item
-    //dit moet misschien in een factory of zoiets niet echt te verantwoordelijkheid van dit bestand
-    public MenuItem mkMenuItem(String name) {
-        return new MenuItem(name, new MenuShortcut(name.charAt(0)));
     }
 }
