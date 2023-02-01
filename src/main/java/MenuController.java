@@ -2,7 +2,6 @@ import java.awt.MenuBar;
 import java.awt.Frame;
 import java.awt.Menu;
 import java.awt.MenuItem;
-import java.awt.MenuShortcut;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
@@ -142,7 +141,7 @@ public class MenuController extends MenuBar {
 
     private void pressOpen() {
         this.getPresentation().clear();
-        Accessor xmlAccessor = new XMLAccessor();
+        Loadable xmlAccessor = new XMLAccessor();
         try {
             xmlAccessor.loadFile(this.getPresentation(), TEST_FILE);
             this.getPresentation().setSlideNumber(0);
@@ -163,7 +162,7 @@ public class MenuController extends MenuBar {
     }
 
     private void pressSave() {
-        Accessor xmlAccessor = new XMLAccessor();
+        Savable xmlAccessor = new XMLAccessor();
         try {
             xmlAccessor.saveFile(this.getPresentation(), SAVED_FILE);
         } catch (IOException exc) {

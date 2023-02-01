@@ -5,7 +5,11 @@
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-class DemoPresentation extends Accessor {
+class DemoPresentation implements Loadable {
+    public static final String DEMO_NAME = "Demo presentation";
+
+    public DemoPresentation() {
+    }
 
     public void loadFile(Presentation presentation, String unusedFilename) {
         presentation.setTitle(DEMO_NAME);
@@ -58,10 +62,5 @@ class DemoPresentation extends Accessor {
         thirdSlide.addSlideItem(1, "This is the end of the presentation.");
         thirdSlide.addSlideItem(new BitmapItem(1, "JabberPoint.jpg"));
         return thirdSlide;
-    }
-
-
-    public void saveFile(Presentation presentation, String unusedFilename) {
-        throw new IllegalStateException("Save As->Demo! called");
     }
 }
