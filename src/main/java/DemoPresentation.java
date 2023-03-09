@@ -24,6 +24,8 @@ class DemoPresentation implements Loadable {
         presentation.append(thirdSlide);
     }
 
+
+//Deze parameters, zouden die in fields moeten of kan ik ze zo laten staan. Ik vind het zo mooier dan in fields.
     public Slide loadSlide1() {
         Slide firstSlide = new Slide();
         firstSlide.setTitle("JabberPoint");

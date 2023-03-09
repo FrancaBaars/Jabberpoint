@@ -125,6 +125,7 @@ public class XMLAccessor implements Savable, Loadable {
 
             this.saveTitleSlide(slide, out);
 
+            //deze loop misschien in een aparte methode
             Vector<SlideItem> slideItems = slide.getSlideItems();
             for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
 
