@@ -26,8 +26,8 @@ public class XMLAccessor implements Savable, Loadable {
     /**
      * Names of xml tags of attributes
      */
-    private static final String SHOWTITLE = "showtitle";
-    private static final String SLIDETITLE = "title";
+    private static final String SHOW_TITLE = "showtitle";
+    private static final String SLIDE_TITLE = "title";
     private static final String SLIDE = "slide";
     private static final String ITEM = "item";
     private static final String LEVEL = "level";
@@ -39,7 +39,7 @@ public class XMLAccessor implements Savable, Loadable {
      * Text of messages
      */
     private static final String PCE = "Parser Configuration Exception";
-    private static final String UNKNOWNTYPE = "Unknown Element type";
+    private static final String UNKNOWN_TYPE = "Unknown Element type";
     private static final String NFE = "Number Format Exception";
     private static final int DEFAULT_LEVEL = 1;
 
@@ -51,32 +51,42 @@ public class XMLAccessor implements Savable, Loadable {
     }
 
     public void loadFile(Presentation presentation, String fileName) throws IOException {
-        int slideNumber, itemNumber, max, maxItems;
         try {
             Element doc = buildDocument(fileName);
-            presentation.setTitle(getTitle(doc, SHOWTITLE));
+            presentation.setTitle(getTitle(doc, SHOW_TITLE));
 
-            NodeList slides = doc.getElementsByTagName(SLIDE);
-            max = slides.getLength();
-            for (slideNumber = 0; slideNumber < max; slideNumber++) {
-                Element xmlSlide = (Element) slides.item(slideNumber);
-                Slide slide = new Slide();
-                slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
-                presentation.append(slide);
-
-                NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
-                maxItems = slideItems.getLength();
-                for (itemNumber = 0; itemNumber < maxItems; itemNumber++) {
-                    Element item = (Element) slideItems.item(itemNumber);
-                    loadSlideItem(slide, item);
-                }
-            }
+            this.addSlidesToPresentation(doc, presentation);
         } catch (IOException iox) {
             System.err.println(iox.toString());
         } catch (SAXException sax) {
             System.err.println(sax.getMessage());
         } catch (ParserConfigurationException pcx) {
             System.err.println(PCE);
+        }
+    }
+
+    private void addSlidesToPresentation(Element doc, Presentation presentation) {
+        int max;
+
+        NodeList slides = doc.getElementsByTagName(SLIDE);
+        max = slides.getLength();
+
+        for (int slideNumber = 0; slideNumber < max; slideNumber++) {
+            Element xmlSlide = (Element) slides.item(slideNumber);
+            Slide slide = new Slide();
+            slide.setTitle(getTitle(xmlSlide, SLIDE_TITLE));
+            presentation.append(slide);
+
+            this.addItemsToSlide(xmlSlide, slide);
+        }
+    }
+
+    private void addItemsToSlide(Element xmlSlide, Slide slide) {
+        NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
+        int maxItems = slideItems.getLength();
+        for (int itemNumber = 0; itemNumber < maxItems; itemNumber++) {
+            Element item = (Element) slideItems.item(itemNumber);
+            this.loadSlideItem(slide, item);
         }
     }
 
@@ -98,7 +108,7 @@ public class XMLAccessor implements Savable, Loadable {
             if (IMAGE.equals(type)) {
                 slide.addSlideItem(new BitmapItem(level, item.getTextContent()));
             } else {
-                System.err.println(UNKNOWNTYPE);
+                System.err.println(UNKNOWN_TYPE);
             }
         }
     }
