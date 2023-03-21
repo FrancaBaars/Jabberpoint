@@ -24,10 +24,9 @@ class DemoPresentation implements Loadable {
         presentation.append(thirdSlide);
     }
 
-
-//Deze parameters, zouden die in fields moeten of kan ik ze zo laten staan. Ik vind het zo mooier dan in fields.
     public Slide loadSlide1() {
-        Slide firstSlide = new Slide();
+        //factory
+        Slide firstSlide = SlideFactory.makeSlide();
         firstSlide.setTitle("JabberPoint");
         firstSlide.addSlideItem(1, "The Java prestentation tool");
         firstSlide.addSlideItem(2, "Copyright (c) 1996-2000: Ian Darwin");
@@ -43,7 +42,7 @@ class DemoPresentation implements Loadable {
     }
 
     public Slide loadSlide2() {
-        Slide secondSlide = new Slide();
+        Slide secondSlide = SlideFactory.makeSlide();
         secondSlide.setTitle("Demonstration of levels and styles");
         secondSlide.addSlideItem(1, "Level 1");
         secondSlide.addSlideItem(2, "Level 2");
@@ -56,7 +55,7 @@ class DemoPresentation implements Loadable {
     }
 
     public Slide loadSlide3() {
-        Slide thirdSlide = new Slide();
+        Slide thirdSlide = SlideFactory.makeSlide();
         thirdSlide.setTitle("The third slide");
         thirdSlide.addSlideItem(1, "To open a new presentation,");
         thirdSlide.addSlideItem(2, "use File->Open from the menu.");

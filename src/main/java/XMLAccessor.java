@@ -73,7 +73,9 @@ public class XMLAccessor implements Savable, Loadable {
 
         for (int slideNumber = 0; slideNumber < max; slideNumber++) {
             Element xmlSlide = (Element) slides.item(slideNumber);
-            Slide slide = new Slide();
+            //De slides moeten eigenlijk in een andere klasse gemaakt worden, deze klasse moet doorgeven aan een andere klasse wat de gegevens zijn die bouwt dan de hele presenatie en geeft die terug eaan xmlaccessor
+
+            Slide slide = SlideFactory.makeSlide();
             slide.setTitle(getTitle(xmlSlide, SLIDE_TITLE));
             presentation.append(slide);
 
