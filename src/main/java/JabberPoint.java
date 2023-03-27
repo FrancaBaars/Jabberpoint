@@ -29,7 +29,7 @@ public class JabberPoint {
                 Loadable demoPresentation = DemoPresentationFactory.makeDemoPresentation();
                 demoPresentation.loadFile(presentation, "");
             } else {
-                new XMLAccessor().loadFile(presentation, argv[0]);
+                XMLAccessorFacotory.makeXMLAccessor().loadFile(presentation, argv[0]);
             }
             presentation.setSlideNumber(0);
         } catch (IOException ex) {
