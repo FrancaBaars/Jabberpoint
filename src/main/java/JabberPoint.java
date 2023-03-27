@@ -21,9 +21,8 @@ public class JabberPoint {
      * The main program
      */
     public static void main(String[] argv) {
-
         StyleMaker.createStyles();
-        Presentation presentation = new Presentation();
+        Presentation presentation = PresentationFactory.makePresentation();
         new SlideViewerFrame(JABBERPOINT_VERSION, presentation);
         try {
             if (argv.length == 0) { //a demo presentation
