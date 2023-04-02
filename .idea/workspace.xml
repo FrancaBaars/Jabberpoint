@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67450154-df3a-475c-81f3-098c682589fe" name="Changes" comment="xml files?">
+    <list default="true" id="67450154-df3a-475c-81f3-098c682589fe" name="Changes" comment="renamed to AccessorFactory and used them">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/XMLAccessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/XMLAccessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DemoPresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DemoPresentation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testPresentation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testPresentation.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,11 +29,24 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
   <component name="GithubProjectSettings">
     <option name="branchProtectionPatterns">
       <list>
         <option value="master" />
       </list>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="85257682-64af-4a99-b8ad-e90084fc56c8" />
+        <option name="url" value="https://github.com/FrancaBaars/Jabberpoint.git" />
+      </UrlAndAccount>
     </option>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -46,19 +60,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "editor.preferences.folding"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.folding&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.JabberPoint (1)">
-    <configuration name="JabberPoint (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\franc\Documents\School\School\Jaar 2\Periode 2\OGO\Jabberpoint\src\test\resources" />
+      <recent name="C:\Users\franc\Documents\School\School\Jaar 2\Periode 2\OGO\Jabberpoint" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="JabberPoint" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JabberPoint" />
+      <module name="Jabberpoint" />
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JabberPoint" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="JabberPoint" />
       <module name="Jabberpoint" />
       <method v="2">
@@ -74,7 +117,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.JabberPoint (1)" />
         <item itemvalue="Application.JabberPoint" />
       </list>
     </recent_temporary>
@@ -91,6 +133,22 @@
       <workItem from="1673171562839" duration="4444000" />
       <workItem from="1673185777085" duration="3487000" />
       <workItem from="1673199100547" duration="1997000" />
+      <workItem from="1678436764313" duration="38000" />
+      <workItem from="1678451559424" duration="2654000" />
+      <workItem from="1679383903695" duration="5112000" />
+      <workItem from="1679389511295" duration="10000" />
+      <workItem from="1679409035172" duration="2263000" />
+      <workItem from="1679419075241" duration="623000" />
+      <workItem from="1679430029711" duration="4000" />
+      <workItem from="1679667168717" duration="1001000" />
+      <workItem from="1679673886356" duration="77000" />
+      <workItem from="1679674086602" duration="371000" />
+      <workItem from="1679899577423" duration="2834000" />
+      <workItem from="1679927879093" duration="670000" />
+      <workItem from="1679985091115" duration="58000" />
+      <workItem from="1680011105314" duration="2234000" />
+      <workItem from="1680161174970" duration="785000" />
+      <workItem from="1680460932850" duration="719000" />
     </task>
     <task id="LOCAL-00001" summary="Added workspace">
       <created>1673096218236</created>
@@ -218,7 +276,56 @@
       <option name="project" value="LOCAL" />
       <updated>1673200242882</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added SlideFactory">
+      <created>1679384496953</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1679384496953</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added PresentationFactory">
+      <created>1679899925306</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1679899925306</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Added DemoPresentationFactory">
+      <created>1679900040689</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1679900040689</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Added XMLAccessorFacotory">
+      <created>1679900350310</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1679900350310</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Added a SlideItemData object and used it in DemoPresentation and moved the adding of the slideitems to the SlideFactory.">
+      <created>1680012968930</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1680012968930</updated>
+    </task>
+    <task id="LOCAL-00024" summary="removed unused tostring method">
+      <created>1680012996192</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1680012996192</updated>
+    </task>
+    <task id="LOCAL-00025" summary="renamed to AccessorFactory and used them">
+      <created>1680461551126</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1680461551126</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,6 +388,13 @@
     <MESSAGE value="small changes with layout" />
     <MESSAGE value="moved making of slides to its own methods." />
     <MESSAGE value="xml files?" />
-    <option name="LAST_COMMIT_MESSAGE" value="xml files?" />
+    <MESSAGE value="Added SlideFactory" />
+    <MESSAGE value="Added PresentationFactory" />
+    <MESSAGE value="Added DemoPresentationFactory" />
+    <MESSAGE value="Added XMLAccessorFacotory" />
+    <MESSAGE value="Added a SlideItemData object and used it in DemoPresentation and moved the adding of the slideitems to the SlideFactory." />
+    <MESSAGE value="removed unused tostring method" />
+    <MESSAGE value="renamed to AccessorFactory and used them" />
+    <option name="LAST_COMMIT_MESSAGE" value="renamed to AccessorFactory and used them" />
   </component>
 </project>

@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!DOCTYPE presentation SYSTEM "jabberpoint.dtd">
+<!DOCTYPE presentation SYSTEM
+		"C:\Users\franc\Documents\School\School\Jaar 2\Periode 2\OGO\Jabberpoint\src\test\resources\jabberpoint.dtd">
 <presentation>
 	<showtitle>XML-Based Presentation for Jabberpoint</showtitle>
 	<slide>
@@ -33,7 +34,7 @@
 		<item kind="image"  level="2">serclogo_fc.jpg</item>
 	</slide>
 	<slide>
-		<title>JabberPoint: Levels and styles</title>
+		<title>jabberpoint.JabberPoint: Levels and styles</title>
 		<item kind="text"  level="1">Level 1</item>
 		<item kind="text"  level="2">Level 2</item>
 		<item kind="text"  level="1">A Jabberful Point</item>
