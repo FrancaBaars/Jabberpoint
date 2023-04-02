@@ -57,7 +57,7 @@ public class XMLAccessor implements Savable, Loadable {
 
             this.addSlidesToPresentation(doc, presentation);
         } catch (IOException iox) {
-            System.err.println(iox.toString());
+            System.err.println(iox);
         } catch (SAXException sax) {
             System.err.println(sax.getMessage());
         } catch (ParserConfigurationException pcx) {
@@ -73,7 +73,7 @@ public class XMLAccessor implements Savable, Loadable {
 
         for (int slideNumber = 0; slideNumber < max; slideNumber++) {
             Element xmlSlide = (Element) slides.item(slideNumber);
-            Slide slide = new Slide();
+            Slide slide = SlideFactory.makeSlide();
             slide.setTitle(getTitle(xmlSlide, SLIDE_TITLE));
             presentation.append(slide);
 
@@ -125,6 +125,7 @@ public class XMLAccessor implements Savable, Loadable {
 
             this.saveTitleSlide(slide, out);
 
+            //deze loop misschien in een aparte methode
             Vector<SlideItem> slideItems = slide.getSlideItems();
             for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
 

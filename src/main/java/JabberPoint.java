@@ -21,16 +21,15 @@ public class JabberPoint {
      * The main program
      */
     public static void main(String[] argv) {
-
         StyleMaker.createStyles();
-        Presentation presentation = new Presentation();
+        Presentation presentation = PresentationFactory.makePresentation();
         new SlideViewerFrame(JABBERPOINT_VERSION, presentation);
         try {
             if (argv.length == 0) { //a demo presentation
-                DemoPresentation demoPresentation = new DemoPresentation();
+                Loadable demoPresentation = DemoPresentationFactory.makeDemoPresentation();
                 demoPresentation.loadFile(presentation, "");
             } else {
-                new XMLAccessor().loadFile(presentation, argv[0]);
+                AccessorFactory.makeXMLAccessor().loadFile(presentation, argv[0]);
             }
             presentation.setSlideNumber(0);
         } catch (IOException ex) {
