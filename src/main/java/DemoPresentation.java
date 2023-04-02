@@ -41,7 +41,7 @@ class DemoPresentation implements Loadable {
         slideItemListSlide1.add(new SlideItemData(3, "Next slide: PgDn or Enter"));
         slideItemListSlide1.add(new SlideItemData(3, "Previous slide: PgUp or up-arrow"));
         slideItemListSlide1.add(new SlideItemData(3, "Quit: q or Q"));
-        //factory
+
         Slide firstSlide = SlideFactory.makeSlide();
         firstSlide.setTitle("JabberPoint");
         SlideFactory.addSlideItemsToSlide(firstSlide, slideItemListSlide1);
