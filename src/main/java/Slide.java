@@ -58,7 +58,6 @@ public class Slide {
     }
 
     //Draws the slide
-    //Deze zou nog opgesplitst kunnen worden
     public void draw(Graphics graphics, Rectangle area, ImageObserver view) {
         float scale = getScale(area);
         int y = area.y;

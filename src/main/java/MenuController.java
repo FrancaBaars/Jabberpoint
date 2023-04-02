@@ -141,7 +141,7 @@ public class MenuController extends MenuBar {
 
     private void pressOpen() {
         this.getPresentation().clear();
-        Loadable xmlAccessor = new XMLAccessor();
+        Loadable xmlAccessor = AccessorFactory.makeXMLAccessor();
         try {
             xmlAccessor.loadFile(this.getPresentation(), TEST_FILE);
             this.getPresentation().setSlideNumber(0);
@@ -162,7 +162,7 @@ public class MenuController extends MenuBar {
     }
 
     private void pressSave() {
-        Savable xmlAccessor = new XMLAccessor();
+        Savable xmlAccessor = AccessorFactory.makeXMLAccessor();
         try {
             xmlAccessor.saveFile(this.getPresentation(), SAVED_FILE);
         } catch (IOException exc) {
